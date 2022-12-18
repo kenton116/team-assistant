@@ -32,9 +32,45 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Row(children: const[
+          Icon(Icons.create),
+          Text("Hello world")
+        ]),
       ),
-      body: Text("HelloWorld"),
+      body: Column(children: [
+        const Text("Hello"),
+        const Text("World"),
+        TextButton(
+          onPressed: () => {print("ボタンが押されたよ")},
+          child: const Text("テスト"),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: const [
+            Icon(
+              Icons.favorite,
+              color: Colors.pink,
+              size: 24.0,
+            ),
+            Icon(
+              Icons.audiotrack,
+              color: Colors.green,
+              size: 30.0,
+            ),
+            Icon(
+              Icons.beach_access,
+              color: Colors.blue,
+              size: 36.0,
+            )
+          ],
+        )
+      ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {print("テスト")},
+        child: const Icon(Icons.timer)
+      ),
+      drawer: const Drawer(child: Center(child: Text("Drawer"))),
+      endDrawer: const Drawer(child: Center(child: Text("EndDrawer"))),
     );
   }
 }
