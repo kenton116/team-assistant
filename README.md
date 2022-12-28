@@ -216,13 +216,58 @@
 | 練習名 | practiceName | 文字 |
 | 練習の概要 | practiceAbout | 文字 |
 | 更新日 | editedAt | 日付 |
-| 作成者 | createdBy | 英数字 |
-| カテゴリー | category | 英数字 |
+| 作成者 | createdBy | 英数字（userID） |
+| チームID | teamID | 英数字（teamID） |
+| カテゴリー | category | 英数字（categoryID） |
 | 開始時刻 | startTime | 時刻 |
 | 終了時刻 | endTime | 時刻 |
 | 提案の有無 | recommend | 文字 |
 | 練習の種類 | practiceKinds | 文字 |
-| メンバー | member | 文字 |
+| メンバー | member | 文字（配列、userID） |
+
+### 練習メニュー（menu）
+
+練習メニューに関するデータベース
+
+| カラム名 | 英語表記 | 形式 |
+|---|---|---|
+| 練習メニューのID | menuID | uuid |
+| 練習メニュー名 | menuName | 文字 |
+| 練習メニューの概要 | menuAbout | 文字 |
+| 更新日 | editedAt | 日付 |
+| チームID | teamID | 英数字（teamID） |
+| カテゴリー | category | 英数字（categoryID） |
+| 所要時間 | requiredTime | 時間 |
+| 最終練習日 | lastDate | 日付 |
+
+### カテゴリー（category）
+
+カテゴリーに関するデータベース
+
+| カラム名 | 英語表記 | 形式 |
+|---|---|---|
+| カテゴリーのID | categoryID | 連番 |
+| カテゴリー名 | categoryName | 文字 |
+| 更新日 | editedAt | 日付 |
+| チームID | teamID | 英数字（teamID） |
+
+### ルーティーン（routine）
+
+ルーティーンに関するデータベース
+
+| カラム名 | 英語表記 | 形式 |
+|---|---|---|
+| ルーティーンのID | routineID | 連番 |
+| ルーティーン名 | routineName | 文字 |
+| ルーティーンの概要 | routineAbout | 文字 |
+| カテゴリー | category | 英数字（categoryID） |
+| 所要時間 | requiredTime | 時間 |
+| 更新日 | editedAt | 日付 |
+| チームID | teamID | 英数字（teamID） |
+| ルーティーンの順番 | order | 数字 |
+| 最初か最後か | FirstOrLast | 文字 |
+
+<!-- TODO　データベースの定義をする -->
 
 <!-- TODO　データベース間の依存関係を記す -->
 ## 依存関係
@@ -243,4 +288,4 @@
 | ~ 6/30 | teamistの追加機能作成 |
 | ~ 7/31 | teamistのデザイン作成 |
 | ~ 8/20 | 公開準備、公開
-| ~ 10/15 | teamistの追加機能(2)作成 |
+| ~ 10/15 | teamistの追加機能（2）作成 |
