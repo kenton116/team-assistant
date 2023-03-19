@@ -109,7 +109,6 @@
 ## ランキング
 
 - 練習メニューのポイント別、年間ポイント別でランキングが見れる
-- 年間ポイント別のランキングの順位はプロフィールにも表示される
 
 ## メモ
 
@@ -206,10 +205,12 @@
 | チームのID | teamID | uuid |
 | チームの名前 | teamName | 文字 |
 | チームの概要 | teamAbout | 文字 |
-| 作成日 | createdAt | 日付 |
-| 更新日 | editAt | 日付 |
+| 作成日 | createdDate | 日付 |
+| 更新日 | editedDate | 日付 |
 | 作成者 | createdBy | 英数字（userID） |
-| メンバー | member | 英数字（JSON） |
+| メンバー | member |
+| メンバーのユーザーID | userID | 英数字 |
+| メンバーの種類 | memberKinds | 文字 |
 
 ### ユーザー（user）
 
@@ -221,8 +222,8 @@
 | ユーザーの名前 | userName | 文字 |
 | ユーザーの概要 | userAbout | 文字 |
 | パスワード | password | 英数字 |
-| 作成日 | createdAt | 日付 |
-| 更新日 | editAt | 日付 |
+| 作成日 | createdDate | 日付 |
+| 更新日 | editedDate | 日付 |
 | アイコン画像 | icon | 画像 |
 
 ### 練習（practice）
@@ -234,7 +235,7 @@
 | 練習のID | practiceID | uuid |
 | 練習名 | practiceName | 文字 |
 | 練習の概要 | practiceAbout | 文字 |
-| 更新日 | editedAt | 日付 |
+| 更新日 | editedDate | 日付 |
 | 作成者 | createdBy | 英数字（userID） |
 | チームID | teamID | 英数字（teamID） |
 | カテゴリー | category | 英数字（categoryID） |
@@ -242,7 +243,9 @@
 | 終了時刻 | endTime | 時刻 |
 | 提案の有無 | recommend | 文字 |
 | 練習の種類 | practiceKinds | 文字 |
-| メンバー（出欠・振り返り） | member | 文字（JSON、userID） |
+| メンバー（出欠・振り返り） | member |
+| メンバーの出欠 | attendance | 文字 |
+| 振り返り | review | 文字 |
 
 ### 練習メニュー（menu）
 
@@ -253,7 +256,7 @@
 | 練習メニューのID | menuID | 連番 |
 | 練習メニュー名 | menuName | 文字 |
 | 練習メニューの概要 | menuAbout | 文字 |
-| 更新日 | editedAt | 日付 |
+| 更新日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 | カテゴリー | category | 英数字（categoryID） |
 | 所要時間 | requiredTime | 時間 |
@@ -267,7 +270,7 @@
 |---|---|---|
 | カテゴリーのID | categoryID | 連番 |
 | カテゴリー名 | categoryName | 文字 |
-| 更新日 | editedAt | 日付 |
+| 更新日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 
 ### ルーティーン（routine）
@@ -281,7 +284,7 @@
 | ルーティーンの概要 | routineAbout | 文字 |
 | カテゴリー | category | 英数字（categoryID） |
 | 所要時間 | requiredTime | 時間 |
-| 更新日 | editedAt | 日付 |
+| 更新日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 | ルーティーンの順番 | order | 数字 |
 | 最初か最後か | FirstOrLast | 文字 |
@@ -293,10 +296,11 @@
 | カラム名 | 英語表記 | 形式 |
 |---|---|---|
 | メモのID | memoID | uuid |
-| メモ名 | routineName | 文字 |
+| メモ名 | memoName | 文字 |
 | メモの内容 | memoContent | 文字 |
-| 添付画像 | memoImage | 画像（配列） |
-| 更新日 | editedAt | 日付 |
+| 添付画像 | memoImage |
+| 添付画像のデータ | base64 | base64 |
+| 更新日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 | 作成者 | createdBy | 英数字（userID） |
 
@@ -309,8 +313,16 @@
 | 当番のID | dutyID | 連番 |
 | 当番名 | dutyName | 文字 |
 | 当番の概要 | dutyAbout | 文字 |
-| 当番の内容 | dutyContent | 文字（連想配列） |
-| 更新日 | editedAt | 日付 |
+| 当番の内容 | dutyContent |
+| 月 | monday |
+| 火 | tuesday |
+| 水 | wednesday |
+| 木 | thursday |
+| 金 | friday |ID
+| 土 | saturday |
+| 日 | sunday |
+| 当番のユーザーID | userID | 英数字 |
+| 更新日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 
 ### 連絡（mail）
@@ -322,8 +334,9 @@
 | 連絡のID | mailID | uuid |
 | 連絡名 | mailName | 文字 |
 | 連絡の内容 | mailContent | 文字 |
-| 添付画像 | mailImage | 画像（配列） |
-| 更新日 | editedAt | 日付 |
+| 添付画像 | mailImage |
+| 添付画像のデータ | base64 | base64 |
+| 更新日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 | 作成者 | createdBy | 英数字（userID） |
 
@@ -335,7 +348,7 @@
 |---|---|---|
 | チャットのID | mailID | uuid |
 | チャットの内容 | mailContent | 文字 |
-| 送信日 | editedAt | 日付 |
+| 送信日 | editedDate | 日付 |
 | チームID | teamID | 英数字（teamID） |
 | 送信者 | createdBy | 英数字（userID） |
 
@@ -361,25 +374,111 @@
 | 通知のID | notificationID | 連番 |
 | 通知名 | notificationName | 数字 |
 | 通知の内容 | notificationContent | 英数字（practiceID） |
-| 送信日 | editedAt | 文字（JSON、practiceID） |
+| 送信日 | editedDate | 文字（JSON、practiceID） |
 | チームID | teamID | 英数字（teamID） |
 | ユーザーID | userID | 英数字（userID） |
 | 既読状況 | read | 文字 |
 
 ## 依存関係
 
+
 - user
-  - team
+  - userID
+    - userName
+    - userAbout
+    - password
+    - createdDate
+    - editedDate
+    - icon
+    - memo（サブコレクション）
+      - memoID
+        - memoName
+        - memoContent
+        - memoImage（サブコレクション）
+          - base64
+        - editedDate
+        - teamID
+        - createdBy
+
+- team
+  - teamID
+    - teamName
+    - teamAbout
+    - createdDate
+    - editedDate
+    - createdBy
+    - member（サブコレクション）
+      - userID
+        - userKind
+    - practice
+      - practiceID
+        - practiceName
+        - practiceAbout
+        - editedDate
+        - createdBy
+        - teamID
+        - category
+        - startTime
+        - endTime
+        - recommend
+        - practiceKinds
+        - member（サブコレクション）
+          - userID
+            - attendance
+            - review
+    - menu
+      - menuID
+        - menuName
+        - menuAbout
+        - editedDate
+        - teamID
+        - category
+        - requiredTime
+        - lastDate
     - category
-      - practice
-        - point（menuにもあり）
-      - menu
-      - routine
-    - memo
+      - categoryID
+        - categoryName
+        - editedDate
+        - teamID
+    - routine
+      - routineID
+        - routineName
+        - routineAbout
+        - category
+        - requiredTime
+        - editedDate
+        - teamID
+        - FirstOrLast
     - duty
+      - dutyID
+        - dutyName
+        - dutyAbout
+        - dutyContent
+          - monday（サブコレクション）
+            - userID
+          - tuesday（サブコレクション）
+            - userID
+          - wednesday（サブコレクション）
+            - userID
+          - thursday（サブコレクション）
+            - userID
+          - friday（サブコレクション）
+            - userID
+          - saturday（サブコレクション）
+            - userID
+          - sunday（サブコレクション）
+            - userID
+        - editedDate
+        - teamID
     - mail
-    - chat
-    - notification
+      - mailID
+        - mailName
+        - mailContent
+        - mailImage（サブコレクション）
+          - base64
+        - editedDate
+        - teamID
+        - createdBy
 
 ## 開発計画
 
@@ -388,10 +487,10 @@
 | ~ 12/31 | 要件定義 |
 | ~ 1/9 | Firebase勉強 |
 | ~ 1/31 | データベース、認証、通知などの勉強 |
-| ~ 2/15 | リリースについての勉強
+| ~ 2/15 | リリースについての勉強 |
 | ~ 3/4 | テストアプリ作成 |
 | ~ 3/25 | teamistの基礎機能作成、未踏提案書記入 |
 | ~ 6/30 | teamistの追加機能作成 |
 | ~ 7/31 | teamistのデザイン作成 |
-| ~ 8/20 | 公開準備、公開
+| ~ 8/20 | 公開準備、公開 |
 | ~ 10/15 | teamistの追加機能（2）作成 |
