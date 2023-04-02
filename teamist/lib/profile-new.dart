@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'firebase_options.dart';
@@ -63,14 +62,14 @@ class _ProfileNewState extends State<ProfileNew> {
                         .copyWith(color: Colors.red),
                   ),
             ElevatedButton(
-              onPressed: () {
-                auth.currentUser!.sendEmailVerification();
+              onPressed: () async {
+                await auth.currentUser!.sendEmailVerification();
               },
               child: Text('確認メールを送信'),
             ),
             IconButton(
               icon: Icon(Icons.refresh),
-              onPressed: () {
+              onPressed: () async {
                 if (auth.currentUser?.uid != null) {
                   context.go('/profile/new');
                 }

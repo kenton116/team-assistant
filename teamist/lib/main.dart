@@ -21,25 +21,25 @@ class MyApp extends StatelessWidget {
     routes: [
       GoRoute(
         path: '/',
-        pageBuilder: (context, state) => MaterialPage(
+        pageBuilder: (context, state) => const MaterialPage(
           child: TopPage(),
         ),
       ),
       GoRoute(
         path: '/sign-in',
-        pageBuilder: (context, state) => MaterialPage(
+        pageBuilder: (context, state) => const MaterialPage(
           child: SignIn(),
         ),
       ),
       GoRoute(
         path: '/sign-up',
-        pageBuilder: (context, state) => MaterialPage(
+        pageBuilder: (context, state) => const MaterialPage(
           child: SignUp(),
         ),
       ),
       GoRoute(
         path: '/profile/new',
-        pageBuilder: (context, state) => MaterialPage(
+        pageBuilder: (context, state) => const MaterialPage(
           child: ProfileNew(),
         ),
       ),

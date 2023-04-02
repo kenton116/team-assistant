@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -29,18 +30,19 @@ class _SignUpState extends State<SignUp> {
           child: Form(
             key: _formkey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                const Text(
+                  'アカウント作成',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                   child: TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'メールアドレスが入力されていません!';
-                      }
-                      return null;
-                    },
                     decoration: const InputDecoration(labelText: 'メールアドレス'),
                     onChanged: (String value) {
                       setState(() {
@@ -53,12 +55,6 @@ class _SignUpState extends State<SignUp> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                   child: TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'パスワードが入力されていません!';
-                      }
-                      return null;
-                    },
                     obscureText: _isObscure,
                     decoration: InputDecoration(
                         labelText: 'パスワード',
@@ -90,16 +86,17 @@ class _SignUpState extends State<SignUp> {
                                   .createUserWithEmailAndPassword(
                                       email: _email, password: _password))
                               .user;
-                          if (user != null) 
-                            context.push('/profile/new');
+                          if (user != null) context.go('/profile/new');
                         } on FirebaseAuthException catch (e) {
-                          setState(() {
-                            final snackBar = SnackBar(
-                              content: Text("登録に失敗しました: エラーコード「${e.code}」"),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                          });
+                          Fluttertoast.showToast(
+                            msg: "アカウント作成に失敗しました: ${e.code}",
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.TOP,
+                            timeInSecForIosWeb: 1,
+                            fontSize: 16.0
+                          );
                         }
                       },
                       child: const Text('アカウント作成')),
