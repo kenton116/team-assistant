@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'sign-in.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'sign-up.dart';
+import 'firebase_options.dart';
+import 'profile-new.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -30,10 +37,16 @@ class MyApp extends StatelessWidget {
           child: SignUp(),
         ),
       ),
+      GoRoute(
+        path: '/profile/new',
+        pageBuilder: (context, state) => MaterialPage(
+          child: ProfileNew(),
+        ),
+      ),
     ],
     errorPageBuilder: (_, state) => MaterialPage(
       key: state.pageKey,
-      child: ErrorPage(),
+      child: const ErrorPage(),
     ),
   );
 
@@ -61,7 +74,7 @@ class TopPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'teamist',
               style: TextStyle(
                 fontSize: 32,
@@ -71,14 +84,14 @@ class TopPage extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               ElevatedButton(
                 onPressed: () => context.push('/sign-in'),
-                child: Text('ログイン'),
+                child: const Text('ログイン'),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               ElevatedButton(
                 onPressed: () => context.push('/sign-up'),
-                child: Text('アカウント作成'),
+                child: const Text('アカウント作成'),
               ),
             ]),
           ],
@@ -88,36 +101,12 @@ class TopPage extends StatelessWidget {
   }
 }
 
-// class BasicPage extends StatelessWidget {
-//   const BasicPage({
-//     Key? key,
-//     required this.title,
-//   }) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         leading: IconButton(
-//           onPressed: () => context.go('/'),
-//           icon: const Icon(Icons.arrow_back_ios),
-//         ),
-//       ),
-//       body: Center(
-//         child: sign-in(),
-//       ),
-//     );
-//   }
-// }
-
 class ErrorPage extends StatelessWidget {
   const ErrorPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('Error'),
       ),

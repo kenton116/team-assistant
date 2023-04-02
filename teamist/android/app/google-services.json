@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "247035356527",
+    "project_id": "teamist-b7d82",
+    "storage_bucket": "teamist-b7d82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247035356527:android:74be5ca73649629af9749a",
+        "android_client_info": {
+          "package_name": "com.example.teamist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247035356527-eefbam0onbqdef7obo0s3p4hmlr9bp04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKCNpUo-x_GmdtBYu8z_3tNkWx8ByaKRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247035356527-eefbam0onbqdef7obo0s3p4hmlr9bp04.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "247035356527-6mi5gd09qsl3gb1vi6jvcm9nvvm7mok5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.teamist"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
