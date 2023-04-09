@@ -500,4 +500,6 @@
 
 ![アーキテクチャ](teamist-architecture.png)
 
+## 提案機能の仕組み
+
 ![提案機能の仕組み](teamist-menu.png)
